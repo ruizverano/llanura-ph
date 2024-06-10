@@ -13,11 +13,12 @@ export default function Login({ status, canResetPassword }) {
         password: '',
         remember: false,
     });
+   
 
     useEffect(() => {
         return () => {
             reset('password');
-        };
+        };        
     }, []);
 
     const submit = (e) => {
@@ -26,9 +27,11 @@ export default function Login({ status, canResetPassword }) {
         post(route('login'));
     };
 
+  
+
     return (
         <GuestLayout>
-            <Head title="Log in" />
+            <Head title="Iniciar sesión" />
 
             {status && <div className="mb-4 font-medium text-sm text-green-600">{status}</div>}
 
@@ -66,7 +69,25 @@ export default function Login({ status, canResetPassword }) {
                     <InputError message={errors.password} className="mt-2" />
                 </div>
 
+                <div className="flex items-center justify-center mt-4">
+
+                    <PrimaryButton className="ms-6" disabled={processing}>
+                        Iniciar Sesión
+                    </PrimaryButton>
+
+                </div>
+
                 <div className="block mt-4">
+                    {canResetPassword && (
+                        <div className="mt-4">
+                            <Link
+                                href={route('password.request')}
+                                className="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                            >
+                                Olvidó su contraseña?
+                            </Link>
+                        </div>
+                    )}
                     <label className="flex items-center">
                         <Checkbox
                             name="remember"
@@ -77,23 +98,6 @@ export default function Login({ status, canResetPassword }) {
                     </label>
                 </div>
 
-                <div className="flex items-center justify-end mt-4">
-                    {canResetPassword && (
-                        <Link
-                            href={route('password.request')}
-                            className="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-                        >
-                            Forgot your password?
-                        </Link>
-                    )}
-
-                    <PrimaryButton className="ms-4" disabled={processing}>
-                        Log in
-                    </PrimaryButton>
-                </div>
-                    <div>
-                        <p>© 2024 Llanura P.H. Todos los derechos reservados. Juan Carlos Alvarado Garzón</p>
-                    </div>                
             </form>
         </GuestLayout>
     );
