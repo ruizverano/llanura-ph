@@ -91,6 +91,9 @@ export default function Login({ status, canResetPassword }) {
                         Log in
                     </PrimaryButton>
                 </div>
+                    <div>
+                        <p>© 2024 Llanura P.H. Todos los derechos reservados. Juan Carlos Alvarado Garzón</p>
+                    </div>                
             </form>
         </GuestLayout>
     );
