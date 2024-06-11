@@ -49,8 +49,8 @@ export default function DeleteUserForm({ className = '' }) {
                 <h2 className="text-lg font-medium text-gray-900">Delete Account</h2>
 
                 <p className="mt-1 text-sm text-gray-600">
-                    Once your account is deleted, all of its resources and data will be permanently deleted. Before
-                    deleting your account, please download any data or information that you wish to retain.
+                    Una vez que se elimine su cuenta, todos sus recursos y datos se eliminarán permanentemente. Antes
+                    Al eliminar su cuenta, descargue cualquier dato o información que desee conserva
                 </p>
             </header>
 
@@ -63,8 +63,8 @@ export default function DeleteUserForm({ className = '' }) {
                     </h2>
 
                     <p className="mt-1 text-sm text-gray-600">
-                        Once your account is deleted, all of its resources and data will be permanently deleted. Please
-                        enter your password to confirm you would like to permanently delete your account.
+                    Una vez que se elimine su cuenta, todos sus recursos y datos se eliminarán permanentemente. Por favor
+                    ingrese su contraseña para confirmar que desea eliminar permanentemente su cuenta.
                     </p>
 
                     <div className="mt-6">
@@ -89,7 +89,7 @@ export default function DeleteUserForm({ className = '' }) {
                         <SecondaryButton onClick={closeModal}>Cancel</SecondaryButton>
 
                         <DangerButton className="ms-3" disabled={processing}>
-                            Delete Account
+                            Eliminar cuenta
                         </DangerButton>
                     </div>
                 </form>
