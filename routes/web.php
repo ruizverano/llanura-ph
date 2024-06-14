@@ -5,6 +5,11 @@ use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
+use App\Http\Controllers\SuperAdminController;
+use App\Http\Controllers\ResidenteController;
+use App\Http\Controllers\PorteroController;
+use App\Http\Middleware\CheckRole;
+
 /* Route::get('/', function () {
     return Inertia::render('Principal', [
         'canLogin' => Route::has('login'),
@@ -30,3 +35,17 @@ Route::middleware('auth')->group(function () {
 });
 
 require __DIR__.'/auth.php';
+
+
+// API routes for role-based access
+Route::middleware(['auth', CheckRole::class.':1'])->group(function () {
+    Route::get('/api/super-admin', [SuperAdminController::class, 'index']);
+});
+
+Route::middleware(['auth', CheckRole::class.':2'])->group(function () {
+    Route::get('/api/residente', [ResidenteController::class, 'index']);
+});
+
+Route::middleware(['auth', CheckRole::class.':3'])->group(function () {
+    Route::get('/api/portero', [PorteroController::class, 'index']);
+});
